@@ -1,9 +1,13 @@
 <template>
-  <v-card></v-card>
+  <v-card>
+      {{list.date}}
+  </v-card>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["list"]
+};
 </script>
 
 <style>
