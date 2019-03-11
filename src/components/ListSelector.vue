@@ -1,9 +1,19 @@
 <template>
-  <div>LOL im a list</div>
+  <v-container grid-list-md fluid>
+      <h1>{{lists}}</h1>
+  </v-container>
 </template>
 
 <script>
-export default {};
+import firestore from "../db.js"
+
+export default {
+    firestore() {
+        return {
+            lists: firestore.collection("lists")
+        }
+    }
+};
 </script>
 
 <style>

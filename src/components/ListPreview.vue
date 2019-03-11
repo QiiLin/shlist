@@ -1,15 +1,10 @@
 <template>
-   <v-container grid-list-sm>
-       
-   </v-container> 
+  <v-card></v-card>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>
