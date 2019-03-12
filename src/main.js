@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 const routes = [
   { path: '/', component: ListSelector },
-  { path: '/list:key', component: ShoppingList },
+  { name: 'list', path: '/list/:key', component: ShoppingList },
 ]
 
 const router = new VueRouter({

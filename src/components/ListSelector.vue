@@ -1,8 +1,8 @@
 <template>
   <v-container grid-list-md fluid>
-    <v-layout align-center justify-center row fill-heigth>
-      <v-flex xs12>
-        <ListPreview v-for="list in lists" v-bind:key="list.key" v-bind:list="list"/>
+    <v-layout wrap align-start justify-space-around row>
+      <v-flex sm4 v-for="list in lists" v-bind:key="list['.key']">
+        <ListPreview v-bind:list="list"/>
       </v-flex>
     </v-layout>
   </v-container>

@@ -1,13 +1,32 @@
 <template>
-    
+  <v-list>
+    <template v-for="item in items">
+      <v-list-tile :key="item['.key']">
+        <v-list-tile-content>
+          <v-list-tile-title>
+            {{item["name"]}}
+            {{item["quantity"]}}
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </template>
+  </v-list>
 </template>
 
 <script>
-export default {
+import firestore from "../db.js";
 
-}
+export default {
+  firestore() {
+    return {
+      items: firestore
+        .collection("lists")
+        .doc(this.$route.params.key)
+        .collection("items")
+    };
+  }
+};
 </script>
 
 <style>
-
 </style>
