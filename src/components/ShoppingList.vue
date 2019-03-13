@@ -21,7 +21,7 @@ export default {
     return {
       items: firestore
         .collection("lists")
-        .doc(this.$route.params.key)
+        .doc(this.$route.params.listId)
         .collection("items")
     };
   }

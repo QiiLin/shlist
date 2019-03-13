@@ -21,7 +21,10 @@ export default {
   },
   methods: {
     goToShop() {
-      this.$router.push({ name: "list", params: { key: this.list[".key"] } });
+      this.$router.push({
+        name: "list",
+        params: { key: this.list[".key"] }
+      });
     }
   }
 };

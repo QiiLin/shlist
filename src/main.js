@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App.vue'
-import ListSelector from './components/ListSelector.vue'
+import Home from './components/Home.vue'
 import ShoppingList from './components/ShoppingList.vue'
 import VueRouter from 'vue-router'
 import VueFirestore from 'vue-firestore'
@@ -11,8 +11,9 @@ Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 const routes = [
-  { path: '/', component: ListSelector },
-  { name: 'list', path: '/list/:key', component: ShoppingList },
+  { path: '/', component: Home },
+  { name: 'list', path: '/list/:lisItd', component: ShoppingList },
+  {name: 'edit', path: '/edit/:listId', component: EditList}
 ]
 
 const router = new VueRouter({
