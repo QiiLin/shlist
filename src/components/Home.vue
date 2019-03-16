@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xs>
-    <v-card v-if="latestCompleted" @click="goToCreate">Add new list</v-card>
-    <v-card>{{latestList}}</v-card>
+    <v-card v-if="latestCompleted" @click="createNewList">Add new list</v-card>
+    <v-card @click="goToLatest">{{ latestList }}</v-card>
   </v-container>
 </template>
 
@@ -23,12 +23,14 @@ export default {
     }
   },
   methods: {
-      goToCreate() {
-          this.$route.push("/edit")
-      }
+    createNewList() {
+      this.$router.push({ name: "edit", params: { listId: "new" } });
+    },
+    goToLatest() {
+      this.$router.push({ name: "edit", params: { listId: this.latestList } });
+    }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

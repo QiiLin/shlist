@@ -2,7 +2,7 @@
   <v-container grid-list-md fluid>
     <v-layout wrap align-start justify-space-around row>
       <v-flex sm4 v-for="list in lists" v-bind:key="list['.key']">
-        <ListPreview v-bind:list="list"/>
+        <ListPreview v-bind:list="list" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -24,5 +24,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

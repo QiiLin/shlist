@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title primary-title>
-      <h3 class="headline mb-1">{{createdAt}}</h3>
+      <h3 class="headline mb-1">{{ createdAt }}</h3>
     </v-card-title>
 
     <v-card-actions class="justify-space-around">
@@ -23,12 +23,11 @@ export default {
     goToShop() {
       this.$router.push({
         name: "list",
-        params: { key: this.list[".key"] }
+        params: { listId: this.list[".key"] }
       });
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

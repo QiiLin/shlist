@@ -4,8 +4,8 @@
       <v-list-tile :key="item['.key']">
         <v-list-tile-content>
           <v-list-tile-title>
-            {{item["name"]}}
-            {{item["quantity"]}}
+            {{ item["name"] }}
+            {{ item["quantity"] }}
           </v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
@@ -28,5 +28,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
