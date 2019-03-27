@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import firestore from "../db.js";
+import { db } from "../db.js";
 import ListPreview from "../components/ListPreview.vue";
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
   firestore() {
     return {
-      lists: firestore.collection("lists")
+      lists: db.collection("lists")
     };
   }
 };

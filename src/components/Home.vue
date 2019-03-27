@@ -1,17 +1,20 @@
 <template>
   <v-container grid-list-xs>
-    <v-card v-if="latestCompleted" @click="createNewList">Add new list</v-card>
+    <v-card v-if="latestCompleted" @click="editNewList">Add new list</v-card>
     <v-card @click="goToLatest">{{ latestList }}</v-card>
   </v-container>
 </template>
 
 <script>
-import firestore from "../db.js";
+import { db } from "../db.js";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 export default {
   firestore() {
     return {
-      listMetaData: firestore.collection("lists").doc("meta-data")
+      listMetaData: db.collection("lists").doc("meta-data"),
+      lists: db.collection("lists")
     };
   },
   computed: {
@@ -23,11 +26,17 @@ export default {
     }
   },
   methods: {
-    createNewList() {
-      this.$router.push({ name: "edit", params: { listId: "new" } });
+    editNewList() {
+      this.$firestore.lists
+        .add({
+          date: firebase.firestore.Timestamp.now()
+        })
+        .then(docRef => {
+          this.$router.push({ name: "edit", params: { listId: docRef.id } });
+        });
     },
-    goToLatest() {
-      this.$router.push({ name: "edit", params: { listId: this.latestList } });
+    editList(listId) {
+      this.$router.push({ name: "edit", params: { listId: listId } });
     }
   }
 };

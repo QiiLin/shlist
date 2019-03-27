@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import firestore from "../db.js";
+import { db } from "../db.js";
 
 export default {
   firestore() {
     return {
-      items: firestore
+      items: db
         .collection("lists")
         .doc(this.$route.params.listId)
         .collection("items")
