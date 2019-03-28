@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xs>
     <v-card v-if="latestCompleted" @click="editNewList">Add new list</v-card>
-    <v-card @click="goToLatest">{{ latestList }}</v-card>
+    <v-card @click="editList(latestList)">{{ latestList }}</v-card>
   </v-container>
 </template>
 
@@ -32,7 +32,11 @@ export default {
           date: firebase.firestore.Timestamp.now()
         })
         .then(docRef => {
-          this.$router.push({ name: "edit", params: { listId: docRef.id } });
+          this.$firestore.lists.doc("meta-data").update({
+            "latest-completed": false,
+            "latest-list": docRef.id
+          });
+          this.editList(docRef.id);
         });
     },
     editList(listId) {
