@@ -1,7 +1,11 @@
 <template>
   <v-container grid-list-xs>
     <v-card v-if="latestCompleted" @click="editNewList">Add new list</v-card>
-    <v-card @click="editList(latestList)">{{ latestList }}</v-card>
+    <v-card>
+      {{ latestList }}
+      <v-btn @click="editList(latestList)">Edit</v-btn>
+      <v-btn @click="shopList(latestList)">Shop</v-btn>
+    </v-card>
   </v-container>
 </template>
 
@@ -26,6 +30,9 @@ export default {
     }
   },
   methods: {
+    shopList(listId) {
+      this.$router.push({ name: "shop", params: { listId: listId } });
+    },
     editNewList() {
       this.$firestore.lists
         .add({
