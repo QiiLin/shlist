@@ -1,14 +1,14 @@
 <template>
   <v-tabs fixed-tabs>
-    <v-tab>Checklist</v-tab>
     <v-tab>List Preview</v-tab>
-
-    <v-tab-item>
-      <Checklist v-bind:listId="this.$route.params.listId"/>
-    </v-tab-item>
+    <v-tab>Checklist</v-tab>
 
     <v-tab-item>
       <ListPreview v-bind:listId="this.$route.params.listId"/>
+    </v-tab-item>
+
+    <v-tab-item>
+      <Checklist v-bind:listId="this.$route.params.listId"/>
     </v-tab-item>
   </v-tabs>
 </template>

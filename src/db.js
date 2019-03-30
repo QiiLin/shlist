@@ -6,6 +6,15 @@ let fap = Firebase.initializeApp(config);
 export const db = fap.firestore();
 export const listColl = db.collection("lists")
 
-export function addItemToList(listId) {
-  return listId
-}
+export const categories = [
+  "fruits",
+  "vegetables",
+  "dairy",
+  "cereals",
+  "canned",
+  "cooking",
+  "meat",
+  "frozen",
+  "household",
+  "misc"]
+
