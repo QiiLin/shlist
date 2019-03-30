@@ -2,9 +2,9 @@
   <div>
     <p v-for="item in items" v-bind:key="item['.key']">
       {{item["name"]}}
-      <v-btn color="success" @click="setItemQty(item['.key'], item['quantity'] + 1)">+</v-btn>
-      {{item["quantity"]}}
       <v-btn color="success" @click="setItemQty(item['.key'], item['quantity'] - 1)">-</v-btn>
+      {{item["quantity"]}}
+      <v-btn color="success" @click="setItemQty(item['.key'], item['quantity'] + 1)">+</v-btn>
       <v-btn color="failure" @click="removeItem(item['.key'])">Delete</v-btn>
     </p>
   </div>

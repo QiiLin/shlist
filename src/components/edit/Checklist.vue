@@ -32,6 +32,7 @@ export default {
     addToList(item, qty) {
       this.$firestore.items.add({
         name: item["name"],
+        picked: false,
         quantity: qty,
         type: item["type"]
       });

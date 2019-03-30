@@ -1,7 +1,11 @@
 <template>
   <v-list>
     <template v-for="item in items">
-      <v-list-tile @click="lockItem(item['.key'])" :key="item['.key']">
+      <v-list-tile
+        :class="{picked: item['picked']} "
+        @click="togglePick(item['.key'], item['picked'])"
+        :key="item['.key']"
+      >
         <v-list-tile-content>
           <v-list-tile-title>{{ item["name"] }}</v-list-tile-title>
           {{ item["quantity"] }}
@@ -16,9 +20,9 @@ import { db } from "../../db.js";
 
 export default {
   methods: {
-    lockItem(itemId) {
+    togglePick(itemId, curState) {
       this.$firestore.items.doc(itemId).update({
-        locked: true
+        picked: !curState
       });
     }
   },
@@ -33,4 +37,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.picked {
+  opacity: 0.5;
+  background: #ccc;
+  text-decoration: line-through;
+}
+</style>
