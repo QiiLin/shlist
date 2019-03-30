@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xs>
     <v-card v-if="latestCompleted" @click="editNewList">Add new list</v-card>
-    <v-card>
+    <v-card v-else>
       {{ latestList }}
       <v-btn @click="editList(latestList)">Edit</v-btn>
       <v-btn @click="shopList(latestList)">Shop</v-btn>
@@ -14,13 +14,17 @@ import { db } from "../db.js";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
+const lists = db.collection("lists");
+
 export default {
   firestore() {
     return {
-      listMetaData: db.collection("lists").doc("meta-data"),
-      lists: db.collection("lists")
+      listMetaData: lists.doc("meta-data"),
+      lists
     };
   },
+  // TODO: remove meta data from computed property
+  metaData: {},
   computed: {
     latestCompleted() {
       return this.listMetaData["latest-completed"];
@@ -31,7 +35,7 @@ export default {
   },
   methods: {
     shopList(listId) {
-      this.$router.push({ name: "shop", params: { listId: listId } });
+      this.$router.push({ name: "shop", params: { listId } });
     },
     editNewList() {
       this.$firestore.lists
@@ -47,7 +51,7 @@ export default {
         });
     },
     editList(listId) {
-      this.$router.push({ name: "edit", params: { listId: listId } });
+      this.$router.push({ name: "edit", params: { listId } });
     }
   }
 };
